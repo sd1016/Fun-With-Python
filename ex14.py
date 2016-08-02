@@ -28,11 +28,15 @@ print "============================================="
 
 # Solution using using sets
 def dup_remv(l):
-    return list(set(l))
+    nl = list(set(l))
+    nl.sort()
+    return nl
 
-print remv_dup([1,1,2,2,3,3,3,4,5,2,1,66,44,33,66,1,2,3,4,5,6])
-print remv_dup([])
-print remv_dup([1,1,2,22,3,3,11,11,55,2,11,66,44,33,66,1,2,3,4,555,6])
-print remv_dup(["Apple","Bottle","Abhi","Zebra","Xerox","Ant"])
+
+
+print dup_remv([1,1,2,2,3,3,3,4,5,2,1,66,44,33,66,1,2,3,4,5,6])
+print dup_remv([])
+print dup_remv([1,1,2,22,3,3,11,11,55,2,11,66,44,33,66,1,2,3,4,555,6])
+print dup_remv(["Apple","Bottle","Abhi","Zebra","Xerox","Ant"])
 
 
