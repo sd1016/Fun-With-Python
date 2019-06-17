@@ -16,7 +16,7 @@ print (len(list3))
 
 
 
-
+#one of official solutions:
 def filetolistofints(filename):
     list_to_return = []
     with open(filename) as f:
