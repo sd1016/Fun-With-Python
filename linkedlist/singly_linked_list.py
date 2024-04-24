@@ -66,8 +66,7 @@ class LinkedList:
         node = self.head
         while node:
             yield node.data
-            node = node.next
-        return    
+            node = node.next  
         
 
 
