@@ -66,7 +66,62 @@ class LinkedList:
         node = self.head
         while node:
             yield node.data
-            node = node.next  
+            node = node.next
+
+    def __len__(self) -> int:
+        """Implement this"""
+        return        
+    
+    def insert_tail(self, data: Any) -> None:
+        """
+        Insert data to the end of linked list.
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert("tail")
+        >>> linked_list
+        tail
+        >>> linked_list.insert_tail("tail_2")
+        >>> linked_list
+        tail -> tail_2
+        >>> linked_list.insert_tail("tail_3")
+        >>> tail_2 -> tail_3
+        """
+        self.insert_nth(len(self), data)
+
+    def insert_nth(self, index: int, data: Any) -> None:
+        """
+        Insert data at given index.
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert_tail("first")
+        >>> linked_list.insert_tail("second")
+        >>> linked_list.insert_tail("third")
+        >>> linked_list
+        first -> second -> third
+        >>> linked_list.insert_nth(1, "fourth")
+        >>> linked_list
+        first -> fourth -> second -> third
+        >>> linked_list.insert_nth(3,"fifth")
+        >>> linked_list
+        first -> fourth -> second -> fifth -> third
+        """
+        if not 0 <= index <= len(self):
+            raise IndexError("list index out of range")
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        elif index == 0:
+            new_node.next_node = self.head # link new_node to head
+            self.head = new_node
+        else:
+            temp = self.head
+            for _ in range(index - 1):
+                temp = temp.next_node
+            new_node.next_node = temp.next_node
+            temp.next_node = new_node
+
+
+
+        
+
         
 
 
