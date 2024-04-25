@@ -69,8 +69,29 @@ class LinkedList:
             node = node.next
 
     def __len__(self) -> int:
-        """Implement this"""
-        return        
+        """
+        Return length of linked list i.e. number of nodes
+        >>> linked_list = LinkedList()
+        >>> len(linked_list)
+        0
+        >>> linked_list.insert_tail("tail")
+        >>> len(linked_list)
+        1
+        >>> linked_list.insert_head("head")
+        >>> len(linked_list)
+        2
+        >>> _ = linked_list.delete_tail()
+        >>> len(linked_list)
+        1
+        >>> _ = linked_list.delete_head()
+        >>> len(linked_list)
+        0
+        """
+        return sum(1 for _ in self)
+
+    def __repr__(self) -> str:
+        """Implement this and move ahead with checking insert_nth """
+        return
     
     def insert_tail(self, data: Any) -> None:
         """
@@ -109,14 +130,14 @@ class LinkedList:
         if self.head is None:
             self.head = new_node
         elif index == 0:
-            new_node.next_node = self.head # link new_node to head
+            new_node.next = self.head # link new_node to head
             self.head = new_node
         else:
             temp = self.head
             for _ in range(index - 1):
-                temp = temp.next_node
-            new_node.next_node = temp.next_node
-            temp.next_node = new_node
+                temp = temp.next
+            new_node.next = temp.next
+            temp.next = new_node
 
 
 
