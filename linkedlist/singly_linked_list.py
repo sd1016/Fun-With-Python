@@ -201,6 +201,12 @@ class LinkedList:
         """
         return self.head is None
 
+    def reverse(self) -> None:
+        """
+        Implement this
+        """    
+        return None
+
 
 
         
