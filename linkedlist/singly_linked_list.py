@@ -131,6 +131,41 @@ class LinkedList:
                 return node
         return None
 
+    # Change the data of a particular node
+    def __setitem__(self, index: int, data: Any) -> None:
+        """
+        >>> linked_list = LinkedList()
+        >>> for i in range(0, 10):
+        ...    linked_list.insert_nth(i, i)
+        >>> linked_list[0] = 666
+        >>> linked_list[0]
+        666
+        >>> linked_list[5] = -666
+        >>> linked_list[5]
+        -666
+        >>> linked_list[5] = -666
+        >>> linked_list[5]
+        -666
+        >>> linked_list[-10] = 666
+        Traceback (most recent call last):
+            ...
+        ValueError: list index out of range.
+        >>> linked_list[len(linked_list)] = 666
+        Traceback (most recent call last):
+            ...
+        ValueError: list index out of range.
+        >>> linked_list[len(linked_list)] = 666
+        Traceback (most recent call last):
+            ...
+        ValueError: list index out of range.
+        """
+        if not 0 <= index < len(self):
+            raise ValueError("list index out of range.")
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        current.data = data
+
     def insert_tail(self, data: Any) -> None:
         """
         Insert data to the end of linked list.
