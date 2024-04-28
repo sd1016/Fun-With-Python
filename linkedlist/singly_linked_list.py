@@ -224,6 +224,12 @@ class LinkedList:
         """
         print(self)
 
+    def delete_head(self) -> Any:
+        """
+        Implement This next
+        """
+        return
+
     def is_empty(self) -> bool:
         """
         Check if linked list is empty.
