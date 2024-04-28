@@ -238,9 +238,40 @@ class LinkedList:
 
     def reverse(self) -> None:
         """
-        Implement this
-        """    
-        return None
+        This reverses the linked list order.
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert_tail("first")
+        >>> linked_list.insert_tail("second")
+        >>> linked_list.insert_tail("third")
+        >>> linked_list
+        first -> second -> third
+        >>> linked_list.reverse()
+        >>> linked_list
+        third -> second -> first
+        """
+        prev = None
+        current = self.head
+        # 1 -> 2 -> 3 -> 4
+        # next = 2
+        #    1    2 -> 3 -> 4 -> 5
+        #    ^    ^
+        #    |    |
+        #    prev current           ##End Iteration 1
+        # next = 3
+        #    1  <-  2   3 -> 4 -> 5
+        #               ^    ^
+        #               |    |
+        #               prev current    ##End Iteration 2
+        while current:
+            # store the current node's next node
+            next = current.next
+            # make the current node's next node point backwards
+            current.next = prev
+            # make the previous node be the current node
+            prev = current
+            # make the current node the next node (to progress iteration)
+            current = next
+        self.head = prev
 
 
 
