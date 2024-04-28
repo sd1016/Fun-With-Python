@@ -32,6 +32,31 @@ class Node:
         """
         return f"Node({self.data})"
 
+    def __getitem__(self, index: int) -> Any:
+        """
+        This defines a special method called __getitem__  for LL class.
+        This method is called whenever the square bracket notation []
+        on an instance of the class is used.  if we have an object ll_object
+        of this class, then ll_object[1] would be equivalent to calling ll_object.__getitem__(1).
+        Provides Indexing Support. Used to get a node at particular position
+        >>> linked_list = LinkedList()
+        >>> for i in range(0, 10):
+        ...     linked_list.insert_nth(i, i)
+        >>> all(str(linked_list[i])) == str(i) for i in range(0, 10))
+        True
+        >>> linked_list[-10]
+        Traceback (most recent call last):
+            ...
+        ValueError: list index out of range.
+        """
+        if not 0 <= index < len(self):
+            raise ValueError("list index out of range.")
+        for i, node in enumerate(self):
+             if i == index:
+                return node
+        return None
+
+
 class LinkedList:
     def __init__(self):
         """
@@ -41,6 +66,7 @@ class LinkedList:
         True
         """
         self.head = None
+
     def __iter__(self):
         """
         This function is intended for iterators to access
@@ -90,8 +116,20 @@ class LinkedList:
         return sum(1 for _ in self)
 
     def __repr__(self) -> str:
-        """Implement this and move ahead with checking insert_nth """
-        return
+        """
+        String representation/visualization of a Linked Lists
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert_tail(1)
+        >>> linked_list.insert_tail(3)
+        >>> linked_list.__repr__()
+        '1 -> 3'
+        >>> repr(linked_list)
+        '1 -> 3'
+        >>> linked_list.insert_tail(5)
+        >>> f"{linked_list}"
+        '1 -> 3 -> 5'
+         """
+        return " -> ".join([str(item) for item in self])
     
     def insert_tail(self, data: Any) -> None:
         """
@@ -138,6 +176,30 @@ class LinkedList:
                 temp = temp.next
             new_node.next = temp.next
             temp.next = new_node
+
+    def print_list(self) -> None:  # print every node data
+        """
+        This method prints every node data.
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert_tail("first")
+        >>> linked_list.insert_tail("second")
+        >>> linked_list.insert_tail("third")
+        >>> linked_list
+        first -> second -> third
+        """
+        print(self)
+
+    def is_empty(self) -> bool:
+        """
+        Check if linked list is empty.
+        >>> linked_list = LinkedList()
+        >>> linked_list.is_empty()
+        True
+        >>> linked_list.insert_head("first")
+        >>> linked_list.is_empty()
+        False
+        """
+        return self.head is None
 
 
 
