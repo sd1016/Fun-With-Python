@@ -32,30 +32,6 @@ class Node:
         """
         return f"Node({self.data})"
 
-    def __getitem__(self, index: int) -> Any:
-        """
-        This defines a special method called __getitem__  for LL class.
-        This method is called whenever the square bracket notation []
-        on an instance of the class is used.  if we have an object ll_object
-        of this class, then ll_object[1] would be equivalent to calling ll_object.__getitem__(1).
-        Provides Indexing Support. Used to get a node at particular position
-        >>> linked_list = LinkedList()
-        >>> for i in range(0, 10):
-        ...     linked_list.insert_nth(i, i)
-        >>> all(str(linked_list[i])) == str(i) for i in range(0, 10))
-        True
-        >>> linked_list[-10]
-        Traceback (most recent call last):
-            ...
-        ValueError: list index out of range.
-        """
-        if not 0 <= index < len(self):
-            raise ValueError("list index out of range.")
-        for i, node in enumerate(self):
-             if i == index:
-                return node
-        return None
-
 
 class LinkedList:
     def __init__(self):
@@ -130,7 +106,31 @@ class LinkedList:
         '1 -> 3 -> 5'
          """
         return " -> ".join([str(item) for item in self])
-    
+
+    def __getitem__(self, index: int) -> Any:
+        """
+        This defines a special method called __getitem__  for LL class.
+        This method is called whenever the square bracket notation []
+        on an instance of the class is used.  if we have an object ll_object
+        of this class, then ll_object[1] would be equivalent to calling ll_object.__getitem__(1).
+        Provides Indexing Support. Used to get a node at particular position
+        >>> linked_list = LinkedList()
+        >>> for i in range(0, 10):
+        ...     linked_list.insert_nth(i, i)
+        >>> all(str(linked_list[i])) == str(i) for i in range(0, 10))
+        True
+        >>> linked_list[-10]
+        Traceback (most recent call last):
+            ...
+        ValueError: list index out of range.
+        """
+        if not 0 <= index < len(self):
+            raise ValueError("list index out of range.")
+        for i, node in enumerate(self):
+             if i == index:
+                return node
+        return None
+
     def insert_tail(self, data: Any) -> None:
         """
         Insert data to the end of linked list.
