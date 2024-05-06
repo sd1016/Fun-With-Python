@@ -230,6 +230,29 @@ class LinkedList:
         """
         return
 
+    def delete_nth(self, index: int = 0) -> Any:
+        """
+        Reimplement this
+        """
+        if not 0 <= index <= len(self) -1:
+            raise("List Index out of range.")
+
+        delete_node = self.head
+
+
+        if index == 0:
+            self.head = self.head.next
+        else:
+            temp = self.head
+            for _ in range(index -1):
+                temp = temp.next
+            delete_node = temp.next
+            temp.next = delete_node.next
+        return delete_node.data
+
+
+
+
     def is_empty(self) -> bool:
         """
         Check if linked list is empty.
