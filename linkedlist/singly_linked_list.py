@@ -230,6 +230,13 @@ class LinkedList:
         """
         return
 
+    def delete_tail(self) -> Any:  # delete from tail
+        """
+        Implement This next
+        """
+        return
+
+
     def delete_nth(self, index: int = 0) -> Any:
         """
         Delete node at given index and return the
