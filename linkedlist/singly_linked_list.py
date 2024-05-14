@@ -232,22 +232,39 @@ class LinkedList:
 
     def delete_nth(self, index: int = 0) -> Any:
         """
-        Reimplement this
+        Delete node at given index and return the
+        node's data.
+        >>> linked_list = LinkedList()
+        >>> linked_list.insert_tail("first")
+        >>> linked_list.insert_tail("second")
+        >>> linked_list.insert_tail("third")
+        >>> linked_list
+        first -> second -> third
+        >>> linked_list.delete_nth(1) # delete middle
+        'second'
+        >>> linked_list
+        first -> third
+        >>> linked_list.delete_nth(5) # this raises error
+        Traceback (most recent call last):
+            ...
+        IndexError: List index out of range.
+        >>> linked_list.delete_nth(-1) # this also raises error
+        Traceback (most recent call last):
+            ...
+        IndexError: List index out of range.
         """
-        if not 0 <= index <= len(self) -1:
-            raise("List Index out of range.")
-
+        if not 0 <= index <= len(self) - 1:
+            raise IndexError("List index out of range.")
         delete_node = self.head
-
 
         if index == 0:
             self.head = self.head.next
         else:
             temp = self.head
-            for _ in range(index -1):
+            for _ in range(index - 1):
                 temp = temp.next
             delete_node = temp.next
-            temp.next = delete_node.next
+            temp.next = temp.next.next
         return delete_node.data
 
 
@@ -263,6 +280,7 @@ class LinkedList:
         >>> linked_list.is_empty()
         False
         """
+
         return self.head is None
 
     def reverse(self) -> None:
