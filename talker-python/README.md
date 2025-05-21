@@ -1,48 +1,82 @@
-Buy Sell Stock
-Brute Force O(N2)
-Greedy Solution
-l = r we would want to buy at the lowest
+# Buy Sell Stock
 
-Shortest Word Distance 2
-2 Key and 1 scale related scale Optimizations in Your WordDistance Implementation:
-We are precomputing the list of indices so the lookup is O(1) and to find the shortest distance we are traversing the array once - O(N)
-If you expect millions of shortest() queries between the same word pairs, you could cache the results using a dictionary or functools.lru_cache (if you refactor).
-Pattern - Prefix Sum 
-Prefix Sum in 4 minutes | LeetCode Pattern
-Cumulative sum from start of array to given index
-How?
-prefix[0] = arr[0]
-prefix[i] = prefix[i-1] + arr[i] NOTE - i =1…arr.length
-Memory constraint - arr[i] = arr[i-1] + arr[i]
-When?
-Range Sum Queries 
-Compute Sum of  elements between two indices frequently [3,4,5,7,9] -> i…..j
-Subarray Sum Problems
-Find or count the number of subarrays that add upto a specific value 
+### Brute Force O(N²)
+- Greedy Solution: `l = r` we would want to buy at the lowest.
+
+---
+
+# Shortest Word Distance 2
+
+### Key Optimizations in Your WordDistance Implementation:
+1. **Precomputing Indices**: 
+    - Lookup is O(1).
+    - To find the shortest distance, traverse the array once - O(N).
+2. **Caching Results**:
+    - If you expect millions of `shortest()` queries between the same word pairs, cache the results using:
+      - A dictionary.
+      - `functools.lru_cache` (if refactored).
+
+---
+
+# Pattern - Prefix Sum
+
+### Prefix Sum in 4 Minutes | LeetCode Pattern
+- **Definition**: Cumulative sum from the start of the array to a given index.
+- **How?**
+  - `prefix[0] = arr[0]`
+  - `prefix[i] = prefix[i-1] + arr[i]` (for `i = 1…arr.length`)
+  - **Memory Constraint**: `arr[i] = arr[i-1] + arr[i]`
+- **When?**
+  - **Range Sum Queries**: Compute the sum of elements between two indices frequently.  
+     Example: `[3, 4, 5, 7, 9] -> i…..j`
+  - **Subarray Sum Problems**: Find or count the number of subarrays that add up to a specific value.
+
+---
+
+# Python for Coding Interviews - Everything You Need to Know
+
+### Key Characteristics of Python:
+1. **Dynamically Typed Language**:
+    - Type checking happens at runtime.
+    - Variable types are determined during execution, not compilation.
+2. **No Variable Type Declaration**:
+    - Python infers the type based on the assigned value.
+3. **Variable Types Can Change**:
+    - A variable can hold an integer at one point and later be reassigned to hold a string or a list.
+
+### Tradeoffs:
+- **Flexibility**: Makes Python code quicker to write.
+- **Risk**: Type-related errors might not be caught until runtime.
+
+### Example:
+- Python's dynamic typing can lead to runtime errors.
+- Go (Golang), with its static typing, addresses this by catching type-related errors at compile time.
+
+---
+
+# Why Are HashMap Keys Immutable?
+
+### Reasons for Immutability:
+1. **Consistency**:
+    - Immutable keys ensure that the hash code and equality remain constant throughout the key's lifetime in the map.
+2. **Thread Safety**:
+    - Immutable objects are inherently thread-safe, beneficial for multi-threaded access.
+3. **Performance**:
+    - Immutable keys allow caching of hash codes, making retrieval faster.
+
+### Best Practices:
+- Common key types like `String`, `Integer`, and other wrapper classes are immutable for these reasons.
+
+### How HashMap Works:
+1. Computes the key’s hash code.
+2. Uses the hash code to locate the corresponding bucket.
+3. Ensures reliable storage and retrieval due to immutability.
 
 
 
 
 
-Python for Coding Interviews - Everything you need to Know
-Python is dynamically typed language
-Type checking happens at runtime: The type of a variable is determined when the code is executed, not during compilation.
-You don't declare variable types: You don't need to explicitly tell Python what type of data a variable will hold (e.g., int x; or string name;). You simply assign a value, and Python infers its type.
-Variable types can change: A variable can hold an integer at one point and then be reassigned to hold a string or a list later in the program.
-This dynamic typing offers flexibility and can make Python code quicker to write, but it also means that type-related errors might not be caught until the program is running.
-This one main tradeoffs of dynamically typed languages like Python. Let's look at an example in Python where a type-related error might go unnoticed until runtime, and then see how Go (Golang) addresses this with its static typing.
+### Source
 
-
-Why hashmap keys are immutable?
-HashMap keys are required to be immutable to ensure the integrity, reliability, and performance of the map. This requirement is rooted in how hash-based collections work.
-map computes the key’s hash code
-map again computes the hash code of the key you provide and looks in the corresponding bucket.
-Consistency: Immutable keys guarantee that the hash code and equality remain constant throughout the key's lifetime in the map, ensuring reliable storage and retrieval
-Thread Safety: Immutable objects are inherently thread-safe, which is beneficial if the map is accessed by multiple threads
-If immutable, the object's hashcode won't change and it allows caching the hashcode of different keys which makes the overall retrieval process very fast.
-Best Practice: Common key types like String, Integer, and other wrapper classes are immutable for this reason
-
-
-
-
-
+This content is sourced from the following document:  
+[Google Document Link](https://docs.google.com/document/d/1CeyAfQd4PCdCFaPmieTyOxE_J02NMUeF_LsPRmjFrUo/edit?tab=t.0)
