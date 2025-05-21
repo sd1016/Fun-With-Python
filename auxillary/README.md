@@ -1,0 +1,1 @@
+The `zip()` function in Python is a built-in utility that combines elements from two or more iterables (like lists, tuples, or strings) into an iterator of tuples. Each tuple groups elements from the input iterables based on their corresponding positions.
